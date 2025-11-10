@@ -43,8 +43,8 @@ public class Controller {
             {"¿Qué sucede si intentas acceder a un índice fuera de rango en un arreglo?", "Se lanza una excepción ArrayIndexOutOfBoundsException.", "Difícil"}
     };
 
-    int contador = 0;
-    int voltear = 0;
+    int contador = -1;
+    int voltear = -1;
 
     @FXML
     private Label Texto;
@@ -58,6 +58,8 @@ public class Controller {
             contador++;
             mostrarPregunta();
         }
+        if (voltear < 0)
+            voltear++;
     }
 
     @FXML
@@ -68,15 +70,23 @@ public class Controller {
         }
     }
 
+
+    //TODO:error al querer voltear la flashcard en el indece -1 aunque se compruebe si es par o impar
     @FXML
     private void voltear() {
+
+        if (contador < 0)
+            return;
+
         if (voltear % 2 == 0) {
             Texto.setText(preguntas[contador][1]);
+            voltear++;
         }
-        else  {
+        else{
             Texto.setText(preguntas[contador][0]);
+            voltear--;
         }
-        voltear++;
+
 
     }
 

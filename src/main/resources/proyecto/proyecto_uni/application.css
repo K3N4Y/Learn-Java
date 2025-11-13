@@ -1,0 +1,42 @@
+.root {
+    -fx-background-color: #FAF7F0;
+}
+
+.header {
+    -fx-background-color: #217868;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.card {
+    -fx-background-color: #E8F0FF;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #A8C5F0;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to right, #A8C5F0, #C8E4FF);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 25;
+    -fx-border-color: #91B7EB;
+    -fx-border-width: 0;
+    -fx-effect: dropshadow(gaussian, rgba(173,216,230,0.6), 8, 0.3, 0, 2);
+
+
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #C8E4FF, #A8C5F0);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.label-titulo {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+}
+

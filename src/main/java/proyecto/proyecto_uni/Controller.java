@@ -1,7 +1,11 @@
 package proyecto.proyecto_uni;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+
+import static javafx.scene.input.KeyCode.*;
 
 public class Controller {
     String[][] preguntas = {
@@ -42,7 +46,6 @@ public class Controller {
             {"¿Cómo se recorre una matriz bidimensional?", "Usando dos bucles for anidados.", "Intermedio"},
             {"¿Qué sucede si intentas acceder a un índice fuera de rango en un arreglo?", "Se lanza una excepción ArrayIndexOutOfBoundsException.", "Difícil"}
     };
-
     int contador = -1;
     int voltear = -1;
 
@@ -50,10 +53,12 @@ public class Controller {
     private Label Texto;
     @FXML
     private Label dificultad;
+    @FXML
+    private Scene scene;
 
 
     @FXML
-    private void siguiente() {
+    public void siguiente() {
         if (contador < preguntas.length - 1) {
             contador++;
             mostrarPregunta();
@@ -63,7 +68,7 @@ public class Controller {
     }
 
     @FXML
-    private void anterior() {
+    public void anterior() {
         if (contador > 0) {
             contador--;
             mostrarPregunta();
@@ -73,7 +78,7 @@ public class Controller {
 
     //TODO:error al querer voltear la flashcard en el indece -1 aunque se compruebe si es par o impar
     @FXML
-    private void voltear() {
+    public void voltearCarta() {
 
         if (contador < 0)
             return;
@@ -107,4 +112,5 @@ public class Controller {
                 break;
         }
     }
+
 }

@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
             // Nos aseguramos que la escena reciba cuando usamos el teclado
             scene.getRoot().requestFocus();
 
-            //TODO:cuando toco un boton con el teclado deja de funcionar
+            //TODO:cuando toco un boton con el raton deja de funcionar con el teclado
             
             // Detectar la tecla usamos y llamar una funcion.
             scene.setOnKeyPressed(event -> {

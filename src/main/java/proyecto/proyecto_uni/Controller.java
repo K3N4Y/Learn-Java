@@ -1,11 +1,7 @@
 package proyecto.proyecto_uni;
 
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-
-import static javafx.scene.input.KeyCode.*;
 
 public class Controller {
     String[][] preguntas = {
@@ -46,6 +42,15 @@ public class Controller {
             {"¿Cómo se recorre una matriz bidimensional?", "Usando dos bucles for anidados.", "Intermedio"},
             {"¿Qué sucede si intentas acceder a un índice fuera de rango en un arreglo?", "Se lanza una excepción ArrayIndexOutOfBoundsException.", "Difícil"}
     };
+
+     String[] consejos = {
+            "Evita usar variables sin inicializar.",
+            "Los nombres de clases deben comenzar con mayúscula.",
+            "Usa comentarios claros, no redundantes.",
+            "Divide tu código en métodos pequeños y reutilizables.",
+            "Recuerda cerrar los recursos como archivos o conexiones."
+    };
+
     int contador = -1;
     int voltear = -1;
 
@@ -54,7 +59,8 @@ public class Controller {
     @FXML
     private Label dificultad;
     @FXML
-    private Scene scene;
+    private Label consejo;
+
 
 
     @FXML

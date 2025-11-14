@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import proyecto.proyecto_uni.Controller.*;
-import javax.swing.*;
+import javax.swing.*;  // En que parte lo estoy usando?
 import java.io.IOException;
 
 public class HelloApplication extends Application {

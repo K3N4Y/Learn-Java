@@ -97,10 +97,16 @@ public class Controller {
 
     };
 
+    // Iniciamos las variables
 
+    // La variable contador lleva que indice de tarjeta vamos comienza en menos xq tenemos una tarjeta de bienbenida que no esta en la matriz
     int contador = -1;
-    int voltear = -1;
 
+    // La variable voltear es para cuando queremos voltear una carta
+    int voltear = 0;
+
+
+    // Importamos del fxml los Labels(cuadros de texto) para poder modificarlos
     @FXML
     private Label Texto;
     @FXML
@@ -116,28 +122,33 @@ public class Controller {
 
 
 
-
+    // Aqui se agrega el @FXML al inicio ya que lo vamos a llamar desde el archivo fxml
     @FXML
     public void siguiente() {
+        // Nos aseguramos que al darle siguiente ocultamos la definicion extendida
         ocultarDefinicion();
 
+        // Cuando llega al final de las cartas y le da a siguiente se asegura que las cartas comienzen de nuevo
         if (contador > 23) {
             contador = -1;
         }
 
+        // Aqui aumentamos el contador y mostramos la pregunta y actualizamos el progreso
         contador++;
         mostrarPregunta();
         mostrarProgreso();
 
-        if (voltear < 0)
-            voltear++;
         }
 
     @FXML
     public void anterior() {
+        // Aqui nos volvemos a asegura que ocultamos la definicion extendida
         ocultarDefinicion();
 
+        // Con el if nos aseguramos que no le podamos dar a anterior cuando estemos en la primera tarjeta
         if (contador > 0) {
+
+            // le rastamos 1 al contador que lleva el indice de la terjeta y de ahi mostramos la pregunta y actualizmos el progreso
             contador--;
             mostrarPregunta();
             mostrarProgreso();
@@ -148,18 +159,29 @@ public class Controller {
     //TODO:error al querer voltear la flashcard en el indece -1 aunque se compruebe si es par o impar
     @FXML
     public void voltearCarta() {
-
+        // Nos aseguramos de que cuando estamos en la tarjeta de bienvenida no se pueda voltear
         if (contador < 0)
             return;
 
+        // Cuando le damos al boton de voltear si es modulo de 2 se voltea sino se voltea a la cara de la pregunta
         if (voltear % 2 == 0) {
+            // Cambiamos el texto a la respuesta
             Texto.setText(preguntas[contador][1]);
+
+            //  Mostramos igual la definicion extendida
+            definicion.setText(definicionesExtendidas[contador]);
+            extendida.setText("Definicion Extendida");
+
+            // Se le suma 1 a voltear para que sea impar y la siguiente vez que le demos a voltear no sea modulo de 2 y entremos al else
             voltear++;
-            Definicion();
+
         }
+
+        // Aqui ya en el else volteamos la carta a la pregunta
         else{
             Texto.setText(preguntas[contador][0]);
             voltear--;
+            // Ocultamos la definicion extendida cuando se pone la pregunta
             ocultarDefinicion();
         }
 
@@ -167,28 +189,27 @@ public class Controller {
     }
 
     public void setConsejo(){
-        consejo.setText(consejos[(int) (Math.random() * 11)]);
+        // Le ponemos un consejo random de entre los 10 que hay
+        consejo.setText(consejos[(int) (Math.random() * consejos.length)]);
     }
 
-    public void Definicion(){
-        definicion.setText(definicionesExtendidas[contador]);
-        extendida.setText("Definicion Extendida");
-    }
-
-    public void ocultarDefinicion(){
+    // Oculta la definicion
+    private void ocultarDefinicion(){
         definicion.setText("");
         extendida.setText("");
     }
 
-    public void mostrarProgreso(){
+    // Muestra el progreso y lo actualiza
+    private void mostrarProgreso(){
         progreso.setText((contador + 1)+ "/" +(preguntas.length));
     }
 
-
+    // Muestra la pregunta
     private void mostrarPregunta() {
         Texto.setText(preguntas[contador][0]);
         dificultad.setText(preguntas[contador][2]);
 
+        // Cambia el estilo dependiendo de la dificultad
         switch (preguntas[contador][2]) {
             case "Fácil":
                 dificultad.setStyle("-fx-background-color: #DBFCE7; -fx-alignment: center; -fx-border-width: 1px; -fx-border-color: #3CB371; -fx-padding: 2;");

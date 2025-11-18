@@ -12,11 +12,17 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
+            // Cargo el fxml
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("prueba.fxml"));
+            // Creo una ecena
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            // Le pongo un titulo al escenario
             stage.setTitle("Aprende Java");
+            // Le asigno una ecena
             stage.setScene(scene);
+            //Muestro el escenario
             stage.show();
+            // Pongo el escenario en pantalla completa
             stage.setFullScreen(true);
 
             // Importamos el controlador del fxml

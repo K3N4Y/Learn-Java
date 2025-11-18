@@ -17,9 +17,13 @@ public class HelloApplication extends Application {
             stage.setTitle("Aprende Java");
             stage.setScene(scene);
             stage.show();
+            stage.setFullScreen(true);
 
             // Importamos el controlador del fxml
             Controller u = fxmlLoader.getController();
+
+            //Mostramos el consejo llamano la funcion
+            u.setConsejo();
 
             // Nos aseguramos que la escena reciba cuando usamos el teclado
             scene.getRoot().requestFocus();

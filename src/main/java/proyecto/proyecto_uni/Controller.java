@@ -48,8 +48,55 @@ public class Controller {
             "Los nombres de clases deben comenzar con mayúscula.",
             "Usa comentarios claros, no redundantes.",
             "Divide tu código en métodos pequeños y reutilizables.",
-            "Recuerda cerrar los recursos como archivos o conexiones."
+            "Recuerda cerrar los recursos como archivos o conexiones.",
+            "Practica todos los dias, aunque sea un poco.",
+            "No temas a equivocarte: cada error es una oprtunidad para aprender.",
+            "Lee codigo de otros para mejorar el tuyo.",
+            "Usa comentarios para entender tu propio codigo.",
+            "No memorices, comprende lo que haces."
     };
+
+    String[] definicionesExtendidas = {
+            //Variables
+            "Una variable en Java se declara escribiendo primero el tipo de dato (como int, String o double) seguido del nombre de la variable. Esta declaración define qué tipo de información puede almacenar y reserva espacio en memoria.",
+            "El valor por defecto de una variable int es 0, siempre y cuando sea un atributo de clase o instancia. Las variables locales no se inicializan automáticamente y deben recibir un valor antes de usarse.",
+            "Una variable local solo existe dentro del método o bloque donde se declara y deja de existir al terminar dicho bloque. Una variable global (de instancia o clase) puede ser accedida desde varios métodos dentro de la misma clase y tiene un ciclo de vida más largo.",
+
+            // Métodos de String
+            "El método .length() devuelve un número entero que representa cuántos caracteres contiene el String, incluyendo espacios, símbolos y letras.",
+            ".equalsIgnoreCase() compara dos textos ignorando si las letras están en mayúsculas o minúsculas, útil cuando el formato no importa.",
+            "substring(inicio, fin) genera una subcadena desde el índice inicio hasta el índice fin-1, sin modificar el texto original y creando un nuevo String.",
+            "El método charAt(2) devuelve el carácter en la posición 2 del String, considerando que los índices empiezan desde cero. En 'Java', ese carácter es 'v'.",
+            "El método replace reemplaza todas las apariciones del carácter 'a' por 'o' y devuelve un nuevo String sin modificar el original.",
+
+            // Sentencias de control
+            "La estructura switch permite evaluar un valor específico y elegir entre múltiples casos de forma ordenada, ideal cuando hay varias opciones predefinidas.",
+            "El if permite evaluar condiciones lógicas complejas que resultan en verdadero o falso, mientras que switch evalúa un único valor fijo para seleccionar un caso determinado.",
+            "Si un case no contiene break, la ejecución continúa en el siguiente case sin detenerse, comportamiento conocido como fall through. Esto puede ser útil o causar errores si no se controla.",
+
+            // Ciclos
+            "El ciclo for se usa cuando se sabe de antemano cuántas veces se repetirá una instrucción. Su estructura incluye inicialización, condición y actualización en una sola línea.",
+            "El ciclo do-while ejecuta al menos una vez antes de evaluar la condición, mientras que while evalúa la condición primero, pudiendo no ejecutarse nunca si la condición es falsa desde el inicio.",
+            "La instrucción continue detiene la iteración actual de un ciclo y salta directamente a la siguiente, ignorando cualquier código restante dentro del ciclo para esa vuelta.",
+            "La instrucción break finaliza la ejecución del ciclo inmediatamente, haciendo que el programa continúe con la siguiente instrucción después del ciclo.",
+
+
+            // Manejo de errores
+            "La estructura try-catch permite manejar excepciones. El bloque try contiene el código que podría fallar y el catch especifica cómo reaccionar ante errores específicos.",
+            "El bloque finally se ejecuta siempre, sin importar si ocurrió o no una excepción. Es útil para cerrar recursos, liberar memoria o ejecutar tareas críticas.",
+            "Exception representa condiciones que pueden ser anticipadas y manejadas por el programa. Error indica fallos graves en la JVM o el sistema que normalmente no deben manejarse con try-catch.",
+            "La palabra throw permite lanzar manualmente una excepción. Por ejemplo: throw new Exception(\"mensaje\"); indica que ocurrió un error específico definido por el programador.",
+
+            // Arreglos y matrices
+            "Un arreglo de enteros se declara escribiendo int[] seguido del nombre del arreglo, lo cual indica que almacenará múltiples valores enteros.",
+            "Un arreglo puede inicializarse directamente especificando sus valores entre llaves, como en int[] nums = {1, 2, 3, 4}; lo que define su tamaño y contenido.",
+            "Para acceder al último elemento se usa el índice datos.length - 1, ya que los arreglos empiezan en la posición cero.",
+            "Un vector es un arreglo unidimensional donde los datos están en una sola línea. Una matriz tiene dos o más dimensiones, organizando la información en filas y columnas.",
+            "Una matriz se recorre usando dos ciclos for anidados: uno para las filas y otro para las columnas, permitiendo acceder a cada elemento.",
+            "Acceder a un índice inexistente provoca la excepción ArrayIndexOutOfBoundsException, indicando que se intentó acceder a una posición fuera del límite del arreglo."
+
+    };
+
 
     int contador = -1;
     int voltear = -1;
@@ -60,24 +107,40 @@ public class Controller {
     private Label dificultad;
     @FXML
     private Label consejo;
+    @FXML
+    private Label definicion;
+    @FXML
+    private Label extendida;
+    @FXML
+    private Label progreso;
+
 
 
 
     @FXML
     public void siguiente() {
-        if (contador < preguntas.length - 1) {
-            contador++;
-            mostrarPregunta();
+        ocultarDefinicion();
+
+        if (contador > 23) {
+            contador = -1;
         }
+
+        contador++;
+        mostrarPregunta();
+        mostrarProgreso();
+
         if (voltear < 0)
             voltear++;
-    }
+        }
 
     @FXML
     public void anterior() {
+        ocultarDefinicion();
+
         if (contador > 0) {
             contador--;
             mostrarPregunta();
+            mostrarProgreso();
         }
     }
 
@@ -92,13 +155,33 @@ public class Controller {
         if (voltear % 2 == 0) {
             Texto.setText(preguntas[contador][1]);
             voltear++;
+            Definicion();
         }
         else{
             Texto.setText(preguntas[contador][0]);
             voltear--;
+            ocultarDefinicion();
         }
 
 
+    }
+
+    public void setConsejo(){
+        consejo.setText(consejos[(int) (Math.random() * 11)]);
+    }
+
+    public void Definicion(){
+        definicion.setText(definicionesExtendidas[contador]);
+        extendida.setText("Definicion Extendida");
+    }
+
+    public void ocultarDefinicion(){
+        definicion.setText("");
+        extendida.setText("");
+    }
+
+    public void mostrarProgreso(){
+        progreso.setText((contador + 1)+ "/" +(preguntas.length));
     }
 
 

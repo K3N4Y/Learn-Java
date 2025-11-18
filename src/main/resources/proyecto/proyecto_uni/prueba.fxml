@@ -40,9 +40,24 @@
                   <Font name="Monospaced Regular" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="consejo" layoutX="35.0" layoutY="140.0" prefHeight="140.0" prefWidth="400.0">
+            <Label fx:id="consejo" alignment="CENTER" layoutX="35.0" layoutY="140.0" prefHeight="140.0" prefWidth="400.0" textAlignment="CENTER" wrapText="true">
                <font>
-                  <Font size="16.0" />
+                  <Font name="Monospaced Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="extendida" alignment="CENTER" contentDisplay="CENTER" layoutY="306.0" prefHeight="24.0" prefWidth="470.0">
+               <font>
+                  <Font name="Monospaced Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="definicion" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="60.0" layoutY="374.0" prefHeight="470.0" prefWidth="350.0" wrapText="true">
+               <font>
+                  <Font name="Monospaced Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="progreso" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="863.0" prefHeight="44.0" prefWidth="130.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Monospaced Regular" size="24.0" />
                </font>
             </Label>
          </children></AnchorPane>
@@ -55,7 +70,10 @@
                     </font>
                 </Label>
 
-                <Button focusTraversable="false" layoutX="400.0" layoutY="50.0" mnemonicParsing="false" onAction="#voltearCarta" stylesheets="@application.css" text="Voltear" />
+                <Button alignment="CENTER" focusTraversable="false" layoutX="384.0" layoutY="56.0" mnemonicParsing="false" onAction="#voltearCarta" stylesheets="@application.css" text="Voltear">
+               <font>
+                  <Font name="Monospaced Regular" size="20.0" />
+               </font></Button>
             </children>
         </AnchorPane>
 
@@ -71,9 +89,15 @@
             </font>
         </Label>
 
-        <Button id="anterior" focusTraversable="false" layoutX="416.0" layoutY="873.0" mnemonicParsing="false" onAction="#anterior" stylesheets="@application.css" text="Anterior" />
+        <Button id="anterior" focusTraversable="false" layoutX="458.0" layoutY="873.0" mnemonicParsing="false" onAction="#anterior" stylesheets="@application.css" text="Anterior">
+         <font>
+            <Font name="Monospaced Regular" size="20.0" />
+         </font></Button>
 
-        <Button id="siguiente" focusTraversable="false" layoutX="836.0" layoutY="873.0" mnemonicParsing="false" onAction="#siguiente" stylesheets="@application.css" text="Siguiente" />
+        <Button id="siguiente" focusTraversable="false" layoutX="893.0" layoutY="873.0" mnemonicParsing="false" onAction="#siguiente" stylesheets="@application.css" text="Siguiente">
+         <font>
+            <Font name="Monospaced Regular" size="20.0" />
+         </font></Button>
 
     </children>
 </AnchorPane>

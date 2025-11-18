@@ -23,6 +23,7 @@
     -fx-border-color: #91B7EB;
     -fx-border-width: 0;
     -fx-effect: dropshadow(gaussian, rgba(173,216,230,0.6), 8, 0.3, 0, 2);
+    -fx-font-size: 20px;
 
 
     -fx-focus-color: transparent;
